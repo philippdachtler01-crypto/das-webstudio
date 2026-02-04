@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAS WEBSTUDIO | Dein Internetauftritt zum Fixpreis</title>
+    <meta name="description" content="Websites für Kleinstunternehmen. Fixpreis, ohne Stress, komplett online.">
+    
+    <!-- Google Fonts: Inter for clean, modern readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config & Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6', // Teal - Calm & Trust
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        },
+                        action: {
+                            500: '#10b981', // Emerald - Friendly "Go"
+                            600: '#059669',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Utilities */
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+        }
+        /* Hide scrollbar for clean look in horizontal scrolling elements if added */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 antialiased selection:bg-brand-100 selection:text-brand-900">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full top-0 z-50 glass-nav border-b border-slate-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="bg-brand-600 text-white p-1.5 rounded-lg">
+                        <i data-lucide="monitor" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-800">DAS WEBSTUDIO</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#vorteile" class="text-slate-600 hover:text-brand-600 font-medium transition">Vorteile</a>
+                    <a href="#ablauf" class="text-slate-600 hover:text-brand-600 font-medium transition">Ablauf</a>
+                    <a href="#preise" class="text-slate-600 hover:text-brand-600 font-medium transition">Preise</a>
+                    <a href="#beispiele" class="text-slate-600 hover:text-brand-600 font-medium transition">Beispiele</a>
+                    <a href="#kontakt" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-full font-medium transition shadow-lg shadow-brand-500/20 transform hover:-translate-y-0.5">
+                        Kostenlose Beratung
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-600 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#vorteile" class="block px-3 py-3 rounded-lg text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-brand-600">Vorteile</a>
+                <a href="#ablauf" class="block px-3 py-3 rounded-lg text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-brand-600">So geht's</a>
+                <a href="#preise" class="block px-3 py-3 rounded-lg text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-brand-600">Pakete</a>
+                <a href="#beispiele" class="block px-3 py-3 rounded-lg text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-brand-600">Referenzen</a>
+                <a href="#kontakt" class="block mt-4 px-3 py-3 bg-brand-50 rounded-lg text-base font-bold text-brand-700 text-center">
+                    Beratung anfordern
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden relative">
+        <!-- Abstract Background Shape -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-100 rounded-full blur-3xl opacity-50 -z-10"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-action-100 rounded-full blur-3xl opacity-50 -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+                Dein kompletter Internetauftritt.<br>
+                <span class="text-brand-600">Fixpreis. Ohne Stress.</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed">
+                Wir bauen moderne Websites speziell für Kleinstunternehmen, Handwerker und Selbstständige. Einfach, bezahlbar und komplett online.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#kontakt" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-full text-white bg-action-600 hover:bg-action-700 shadow-lg shadow-action-500/30 transition transform hover:-translate-y-1">
+                    Kostenlose Beratung anfordern
+                </a>
+                <a href="#beispiele" class="inline-flex justify-center items-center px-8 py-4 border border-slate-200 text-lg font-medium rounded-full text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-300 transition">
+                    Beispiele ansehen
+                </a>
+            </div>
+            
+            <div class="mt-12 flex justify-center items-center gap-2 text-sm text-slate-500 font-medium">
+                <i data-lucide="check-circle" class="w-4 h-4 text-action-500"></i> Schon über 50 Projekte realisiert
+                <span class="mx-2">•</span>
+                <i data-lucide="check-circle" class="w-4 h-4 text-action-500"></i> 100% Zufriedenheitsgarantie
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST & BENEFITS -->
+    <section id="vorteile" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">Warum DAS WEBSTUDIO?</h2>
+                <p class="mt-4 text-lg text-slate-600">Wir machen Webdesign so einfach wie Pizza bestellen.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Benefit 1 -->
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition text-center sm:text-left">
+                    <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center mb-5 mx-auto sm:mx-0">
+                        <i data-lucide="wallet" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Echte Fixpreise</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Du weißt vorher genau, was es kostet. Keine versteckten Gebühren, keine Stundensätze, kein "kommt drauf an".
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition text-center sm:text-left">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-5 mx-auto sm:mx-0">
+                        <i data-lucide="coffee" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Kein Agentur-Bla-Bla</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Wir sprechen Deutsch, kein Fachchinesisch. Wir erklären alles verständlich und kümmern uns um die Technik.
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition text-center sm:text-left">
+                    <div class="w-12 h-12 bg-action-100 text-action-600 rounded-xl flex items-center justify-center mb-5 mx-auto sm:mx-0">
+                        <i data-lucide="wifi" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Alles Online</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Keine zeitraubenden Meetings vor Ort. Wir klären alles effizient per Telefon, E-Mail oder Video-Call.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="ablauf" class="py-20 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">In 3 Schritten online</h2>
+            </div>
+
+            <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Connector Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-0 w-full h-1 bg-slate-200 -z-10"></div>
+
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+                    <div class="w-16 h-16 mx-auto bg-brand-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 border-4 border-slate-50">1</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Beratung anfordern</h3>
+                    <p class="text-slate-600 text-sm">Fülle einfach das Formular unten aus. Wir melden uns für ein kurzes Kennenlernen.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+                    <div class="w-16 h-16 mx-auto bg-brand-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 border-4 border-slate-50">2</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Angebot erhalten</h3>
+                    <p class="text-slate-600 text-sm">Du bekommst ein klares Festpreis-Angebot. Wenn es passt, legen wir sofort los.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm text-center relative">
+                    <div class="w-16 h-16 mx-auto bg-action-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 border-4 border-slate-50">3</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Online gehen</h3>
+                    <p class="text-slate-600 text-sm">Nach deiner Freigabe schalten wir deine neue Website live. Fertig!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKAGES & PRICING -->
+    <section id="preise" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">Einfache Pakete. Klare Preise.</h2>
+                <p class="mt-4 text-slate-600">Einmal zahlen, alles gehört dir. (Optionales Pflege-Abo möglich)</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                
+                <!-- Package 1: Starter -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-8 hover:border-brand-300 transition">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2">Starter</h3>
+                    <p class="text-slate-500 text-sm mb-6">Perfekt für die erste Visitenkarte im Netz.</p>
+                    <div class="text-4xl font-bold text-slate-900 mb-6">499 € <span class="text-sm font-normal text-slate-500">netto</span></div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start text-slate-600 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-action-500 mr-2 shrink-0"></i> One-Page Design (Eine Seite)
+                        </li>
+                        <li class="flex items-start text-slate-600 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-action-500 mr-2 shrink-0"></i> Optimiert fürs Handy (Responsive)
+                        </li>
+                        <li class="flex items-start text-slate-600 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-action-500 mr-2 shrink-0"></i> Kontaktformular & Impressum
+                        </li>
+                        <li class="flex items-start text-slate-600 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-action-500 mr-2 shrink-0"></i> Kurze Lieferzeit (ca. 1 Woche)
+                        </li>
+                    </ul>
+                    <a href="#kontakt" class="block w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-900 font-medium rounded-xl text-center transition">Anfragen</a>
+                </div>
+
+                <!-- Package 2: Business (Featured) -->
+                <div class="bg-white rounded-2xl border-2 border-brand-500 p-8 shadow-xl relative transform lg:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">BELIEBT</div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2">Business</h3>
+                    <p class="text-slate-500 text-sm mb-6">Der Standard für lokale Dienstleister.</p>
+                    <div class="text-4xl font-bold text-slate-900 mb-6">999 € <span class="text-sm font-normal text-slate-500">netto</span></div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start text-slate-700 text-sm font-medium">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 mr-2 shrink-0"></i> Bis zu 5 Unterseiten
+                        </li>
+                        <li class="flex items-start text-slate-700 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 mr-2 shrink-0"></i> Individuelles, modernes Design
+                        </li>
+                        <li class="flex items-start text-slate-700 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 mr-2 shrink-0"></i> Google Maps & Business Eintrag
+                        </li>
+                        <li class="flex items-start text-slate-700 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 mr-2 shrink-0"></i> Basis Suchmaschinen-Optimierung
+                        </li>
+                        <li class="flex items-start text-slate-700 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-brand-600 mr-2 shrink-0"></i> WhatsApp-Chat Button
+                        </li>
+                    </ul>
+                    <a href="#kontakt" class="block w-full py-3 px-4 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-xl text-center transition shadow-md">Jetzt auswählen</a>
+                </div>
+
+                <!-- Package 3: Care -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+                    <h3 class="text-xl font-semibold text-slate-900 mb-2">Sorglos-Pflege</h3>
+                    <p class="text-slate-500 text-sm mb-6">Damit technisch alles sicher bleibt.</p>
+                    <div class="text-4xl font-bold text-slate-900 mb-6">39 € <span class="text-sm font-normal text-slate-500">/Monat</span></div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start text-slate-600 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-slate-400 mr-2 shrink-0"></i> Hosting & Domain inklusive
+                        </li>
+                        <li class="flex items-start text-slate-600 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-slate-400 mr-2 shrink-0"></i> Regelmäßige Sicherheits-Updates
+                        </li>
+                        <li class="flex items-start text-slate-600 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-slate-400 mr-2 shrink-0"></i> Monatliche Datensicherung
+                        </li>
+                        <li class="flex items-start text-slate-600 text-sm">
+                            <i data-lucide="check" class="w-5 h-5 text-slate-400 mr-2 shrink-0"></i> Kleine Textänderungen inklusive
+                        </li>
+                    </ul>
+                    <a href="#kontakt" class="block w-full py-3 px-4 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium rounded-xl text-center transition">Dazu buchen</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO / EXAMPLES -->
+    <section id="beispiele" class="py-20 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">Beispiele & Referenzen</h2>
+                <p class="mt-4 text-slate-600">So könnte dein neuer Auftritt aussehen.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+                    <!-- Browser Mockup Header -->
+                    <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-300"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-300"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-300"></div>
+                    </div>
+                    <!-- Placeholder Content Area -->
+                    <div class="bg-amber-50 h-48 flex items-center justify-center relative overflow-hidden">
+                        <i data-lucide="croissant" class="w-16 h-16 text-amber-300 opacity-50 absolute -right-4 -bottom-4 transform rotate-12"></i>
+                        <div class="text-center">
+                            <h4 class="font-serif text-2xl text-amber-900">Bäckerei Müller</h4>
+                            <span class="text-xs text-amber-700 uppercase tracking-widest mt-1 block">Frisch & Lokal</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Handwerk & Tradition</h3>
+                        <p class="text-sm text-slate-500 mb-4">Onepager für eine lokale Bäckerei mit Öffnungszeiten und Anfahrt.</p>
+                        <button class="text-brand-600 font-medium text-sm flex items-center group-hover:underline">
+                            Projekt ansehen <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+                    <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-300"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-300"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-300"></div>
+                    </div>
+                    <div class="bg-slate-800 h-48 flex items-center justify-center relative overflow-hidden">
+                        <i data-lucide="scissors" class="w-16 h-16 text-slate-600 opacity-50 absolute -right-4 -bottom-4 transform rotate-12"></i>
+                        <div class="text-center">
+                            <h4 class="font-sans text-2xl text-white font-light tracking-wide">ELITE CUTS</h4>
+                            <span class="text-xs text-slate-400 uppercase tracking-widest mt-1 block">Barbershop</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Friseur & Beauty</h3>
+                        <p class="text-sm text-slate-500 mb-4">Modernes Dark-Design mit Terminbuchungs-Button.</p>
+                        <button class="text-brand-600 font-medium text-sm flex items-center group-hover:underline">
+                            Projekt ansehen <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+                    <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-300"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-300"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-300"></div>
+                    </div>
+                    <div class="bg-blue-50 h-48 flex items-center justify-center relative overflow-hidden">
+                        <i data-lucide="briefcase" class="w-16 h-16 text-blue-200 opacity-50 absolute -right-4 -bottom-4 transform rotate-12"></i>
+                        <div class="text-center">
+                            <h4 class="font-sans text-2xl text-blue-900 font-bold">Kanzlei Dr. Recht</h4>
+                            <span class="text-xs text-blue-600 uppercase tracking-widest mt-1 block">Rechtsberatung</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Dienstleistung</h3>
+                        <p class="text-sm text-slate-500 mb-4">Seriöses Business-Paket mit Blog-Funktion und Team-Vorstellung.</p>
+                        <button class="text-brand-600 font-medium text-sm flex items-center group-hover:underline">
+                            Projekt ansehen <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Wer steckt dahinter?</h2>
+            <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                Hi! Wir sind DAS WEBSTUDIO. Wir glauben daran, dass auch kleine Unternehmen eine professionelle Website verdienen, ohne dafür ein Vermögen auszugeben.
+                Wir sind keine riesige Agentur mit Glaspalast und teuren Kaffeemaschinen. Wir sind digitale Handwerker, die pragmatische Lösungen lieben.
+                <br><br>
+                Unser Ziel: Dich so schnell und stressfrei wie möglich ins Internet zu bringen, damit du dich auf dein Geschäft konzentrieren kannst.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONSULTATION FORM (CONVERSION) -->
+    <section id="kontakt" class="py-24 bg-brand-600 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 right-0 w-64 h-64 bg-black rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Kostenlose & unverbindliche Beratung</h2>
+                <p class="text-brand-100 text-lg">Keine Verkaufsspielchen. Wir schauen gemeinsam, ob und welches Paket für dich passt.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-2xl p-8 sm:p-10">
+                <form onsubmit="event.preventDefault(); alert('Danke! Dies ist eine Demo-Seite. Das Formular wurde nicht wirklich abgesendet.');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Dein Name</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition" placeholder="Max Mustermann">
+                        </div>
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-slate-700 mb-1">Firmenname (Optional)</label>
+                            <input type="text" id="company" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition" placeholder="Muster GmbH">
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="industry" class="block text-sm font-medium text-slate-700 mb-1">Branche</label>
+                        <select id="industry" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition text-slate-600">
+                            <option value="" disabled selected>Bitte wählen...</option>
+                            <option value="handwerk">Handwerk</option>
+                            <option value="gastronomie">Gastronomie</option>
+                            <option value="dienstleistung">Dienstleistung (Friseur, Kosmetik, etc.)</option>
+                            <option value="beratung">Beratung / Coaching</option>
+                            <option value="handel">Einzelhandel</option>
+                            <option value="sonstiges">Sonstiges</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <span class="block text-sm font-medium text-slate-700 mb-2">Was brauchst du?</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="flex items-center space-x-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
+                                <input type="checkbox" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
+                                <span class="text-slate-700 text-sm">Neue Website</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
+                                <input type="checkbox" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
+                                <span class="text-slate-700 text-sm">Überarbeitung (Relaunch)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
+                                <input type="checkbox" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
+                                <span class="text-slate-700 text-sm">Google Business Eintrag</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
+                                <input type="checkbox" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
+                                <span class="text-slate-700 text-sm">Weiß noch nicht genau</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">E-Mail Adresse</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition" placeholder="max@beispiel.de">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Telefonnummer (Optional)</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition" placeholder="0123 456789">
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Deine Nachricht (Optional)</label>
+                        <textarea id="message" rows="3" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition" placeholder="Erzähl uns kurz von deinem Vorhaben..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 px-6 bg-action-600 hover:bg-action-700 text-white font-bold text-lg rounded-xl shadow-lg shadow-action-500/30 transition transform hover:-translate-y-1">
+                        Beratung anfordern
+                    </button>
+                    <p class="text-center text-xs text-slate-400 mt-4">Deine Daten werden sicher übertragen und nur zur Kontaktaufnahme genutzt.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 text-white mb-4">
+                        <div class="bg-brand-600 p-1 rounded-md">
+                            <i data-lucide="monitor" class="w-5 h-5"></i>
+                        </div>
+                        <span class="font-bold text-lg">DAS WEBSTUDIO</span>
+                    </div>
+                    <p class="text-sm">
+                        Wir bringen kleine Unternehmen groß raus. <br>
+                        Digital, einfach und transparent.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#vorteile" class="hover:text-brand-400 transition">Vorteile</a></li>
+                        <li><a href="#ablauf" class="hover:text-brand-400 transition">Ablauf</a></li>
+                        <li><a href="#preise" class="hover:text-brand-400 transition">Preise</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Kontakt</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center"><i data-lucide="mail" class="w-4 h-4 mr-2"></i> hallo@das-webstudio.de</li>
+                        <!-- <li class="flex items-center"><i data-lucide="phone" class="w-4 h-4 mr-2"></i> +49 123 456 7890</li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2024 DAS WEBSTUDIO. Alle Rechte vorbehalten.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Impressum</a>
+                    <a href="#" class="hover:text-white transition">Datenschutz</a>
+                    <a href="#" class="hover:text-white transition">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
