@@ -411,8 +411,25 @@
                 <p class="text-brand-100 text-lg">Keine Verkaufsspielchen. Wir schauen gemeinsam, ob und welches Paket für dich passt.</p>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-2xl p-8 sm:p-10">
-                <form onsubmit="event.preventDefault(); alert('Danke! Dies ist eine Demo-Seite. Das Formular wurde nicht wirklich abgesendet.');">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 sm:p-10 transition-all duration-300">
+                
+                <!-- Success Message (Hidden by default) -->
+                <div id="success-message" class="hidden text-center py-10">
+                    <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="check" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Vielen Dank!</h3>
+                    <p class="text-lg text-slate-600 mb-8">
+                        Wir haben deine Anfrage erhalten und gespeichert.<br>
+                        Wir melden uns in Kürze bei dir.
+                    </p>
+                    <button onclick="window.location.reload()" class="inline-flex items-center text-brand-600 font-medium hover:underline">
+                        Zurück zur Website
+                    </button>
+                </div>
+
+                <!-- Form -->
+                <form id="consultation-form">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Dein Name</label>
@@ -441,19 +458,19 @@
                         <span class="block text-sm font-medium text-slate-700 mb-2">Was brauchst du?</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <label class="flex items-center space-x-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
-                                <input type="checkbox" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
+                                <input type="checkbox" name="needs" value="Neue Website" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
                                 <span class="text-slate-700 text-sm">Neue Website</span>
                             </label>
                             <label class="flex items-center space-x-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
-                                <input type="checkbox" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
+                                <input type="checkbox" name="needs" value="Relaunch" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
                                 <span class="text-slate-700 text-sm">Überarbeitung (Relaunch)</span>
                             </label>
                             <label class="flex items-center space-x-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
-                                <input type="checkbox" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
+                                <input type="checkbox" name="needs" value="Google Business" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
                                 <span class="text-slate-700 text-sm">Google Business Eintrag</span>
                             </label>
                             <label class="flex items-center space-x-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
-                                <input type="checkbox" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
+                                <input type="checkbox" name="needs" value="Unsure" class="w-5 h-5 text-brand-600 rounded focus:ring-brand-500 border-gray-300">
                                 <span class="text-slate-700 text-sm">Weiß noch nicht genau</span>
                             </label>
                         </div>
@@ -475,7 +492,7 @@
                         <textarea id="message" rows="3" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition" placeholder="Erzähl uns kurz von deinem Vorhaben..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-4 px-6 bg-action-600 hover:bg-action-700 text-white font-bold text-lg rounded-xl shadow-lg shadow-action-500/30 transition transform hover:-translate-y-1">
+                    <button type="submit" id="submit-btn" class="w-full py-4 px-6 bg-action-600 hover:bg-action-700 text-white font-bold text-lg rounded-xl shadow-lg shadow-action-500/30 transition transform hover:-translate-y-1 flex justify-center items-center">
                         Beratung anfordern
                     </button>
                     <p class="text-center text-xs text-slate-400 mt-4">Deine Daten werden sicher übertragen und nur zur Kontaktaufnahme genutzt.</p>
@@ -527,12 +544,30 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script>
+    <!-- Logic & Scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        // Initialize Firebase
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+        // Sign in anonymously to allow writing to database
+        signInAnonymously(auth).then(() => {
+            console.log("Verbunden für Formular-Übertragung");
+        }).catch((error) => {
+            console.error("Auth error", error);
+        });
+
         // Initialize Icons
         lucide.createIcons();
 
-        // Mobile Menu Toggle
+        // Mobile Menu Logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
@@ -540,11 +575,61 @@
             menu.classList.toggle('hidden');
         });
 
-        // Close mobile menu on link click
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
             });
+        });
+
+        // FORM HANDLING LOGIC
+        const form = document.getElementById('consultation-form');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // UI Loading state
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = `
+                <i data-lucide="loader" class="w-5 h-5 animate-spin mr-2"></i> Wird gesendet...
+            `;
+            lucide.createIcons(); // Refresh icons for the loader
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            try {
+                // Collect data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    company: document.getElementById('company').value,
+                    industry: document.getElementById('industry').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    message: document.getElementById('message').value,
+                    needs: Array.from(document.querySelectorAll('input[name="needs"]:checked')).map(cb => cb.value),
+                    timestamp: new Date().toISOString()
+                };
+
+                // Save to Firestore (Public Data Collection)
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'consultation_requests'), formData);
+
+                // Show Success UI
+                form.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                
+                // Scroll to message slightly if needed
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("Es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut.");
+                
+                // Reset UI
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
         });
     </script>
 </body>
